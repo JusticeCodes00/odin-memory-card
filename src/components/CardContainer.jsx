@@ -1,7 +1,11 @@
-export default function CardContainer() {
+import Card from "./Card";
+
+export default function CardContainer({ cards }) {
   return (
     <div className="card-container">
-      <p>Card Container</p>
+      {cards.map((card) => (
+        <Card key={card.id} {...card}/>
+      ))}
     </div>
   );
 }

@@ -3,6 +3,7 @@ export default async function fetchCards() {
 
   while (cardIds.length < 12) {
     const randomId = Math.floor(Math.random() * 1010 + 1);
+    
     if (!cardIds.includes(randomId)) {
       cardIds.push(randomId);
     }
@@ -14,10 +15,10 @@ export default async function fetchCards() {
 
   const jsonData = await Promise.all(data.map((response) => response.json()));
 
-  const cards = jsonData.map(({ id, name, sprites: { front_default } }) => ({
+  const cards = jsonData.map(({ id, name, sprites }) => ({
     id,
     name,
-    front_default,
+    frontDefault: sprites.other["official-artwork"].front_default,
   }));
 
   return cards;
