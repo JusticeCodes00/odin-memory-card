@@ -33,10 +33,6 @@ export default function App() {
     setCards(shuffle(cards));
   }
 
-  console.log("score " + score);
-  console.log("Best score " + bestScore);
-  console.log("Round " + round);
-
   useEffect(() => {
     let ignore = false;
     async function fetchData() {
