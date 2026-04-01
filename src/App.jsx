@@ -4,21 +4,48 @@ import CardContainer from "./components/CardContainer";
 import Footer from "./components/Footer";
 import fetchCards from "./utils/fetchCards.js";
 import { useEffect, useState } from "react";
+import dummyCardData from "./utils/dummyCardData.js";
+import shuffle from "./utils/shuffle.js";
 
 const initialRound = 1;
 
 export default function App() {
   const [cards, setCards] = useState([]);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [round, setRound] = useState(initialRound);
+
+  const [cardClickedIds, setCardClickedIds] = useState([]);
+
+  function onCardClick(id) {
+    if (cardClickedIds.includes(id)) {
+      if (score > bestScore) {
+        setBestScore(score);
+      }
+      setScore(0);
+      setCardClickedIds([]);
+      setRound(round + 1);
+      return;
+    }
+
+    setScore(score + 1);
+    setCardClickedIds([...cardClickedIds, id]);
+    setCards(shuffle(cards));
+  }
+
+  console.log("score " + score);
+  console.log("Best score " + bestScore);
+  console.log("Round " + round);
 
   useEffect(() => {
     let ignore = false;
     async function fetchData() {
       try {
-        if (ignore) return;
-        setCards(await fetchCards());
+        const data = await fetchCards();
+        if (!ignore) setCards(data);
       } catch (e) {
-        console.error(e);
+        console.error(e.message);
+        setCards(dummyCardData);
       }
     }
 
@@ -26,13 +53,11 @@ export default function App() {
     return () => (ignore = true);
   }, [round]);
 
-  console.log(cards);
-
   return (
     <div className="app">
-      <Header />
+      <Header score={score} bestScore={bestScore} />
       <main>
-        <CardContainer cards={cards} />
+        <CardContainer onCardClick={onCardClick} cards={cards} />
       </main>
       <Footer />
     </div>

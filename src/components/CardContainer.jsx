@@ -1,10 +1,11 @@
+import { useState } from "react";
 import Card from "./Card";
 
-export default function CardContainer({ cards }) {
+export default function CardContainer({ onCardClick, cards }) {
   return (
     <div className="card-container">
       {cards.map((card) => (
-        <Card key={card.id} {...card}/>
+        <Card onCardClick={onCardClick} key={card.id} {...card} />
       ))}
     </div>
   );
