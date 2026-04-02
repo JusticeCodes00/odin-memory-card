@@ -18,7 +18,6 @@ export default function App() {
   const [cardClickedIds, setCardClickedIds] = useState([]);
 
   function onCardClick(id) {
-    document.activeElement.blur();
     if (cardClickedIds.includes(id)) {
       if (score > bestScore) {
         setBestScore(score);
