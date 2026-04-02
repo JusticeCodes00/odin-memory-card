@@ -2,10 +2,10 @@ export default function Scoreboard({ bestScore, score }) {
   return (
     <div className="score-board">
       <p>
-        <span>Score: {score}</span>
+        Score: <span>{score}</span>
       </p>
       <p>
-        <span>Best Score: {bestScore}</span>
+        Best Score: <span> {bestScore}</span>
       </p>
     </div>
   );

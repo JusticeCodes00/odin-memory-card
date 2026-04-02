@@ -3,7 +3,7 @@ export default async function fetchCards() {
 
   while (cardIds.length < 12) {
     const randomId = Math.floor(Math.random() * 1010 + 1);
-    
+
     if (!cardIds.includes(randomId)) {
       cardIds.push(randomId);
     }

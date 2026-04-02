@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer>
-      <p>Created by TheDeveloper</p>
+      <p>© 2026 JusticeCodes. Built with React & PokéAPI.</p>
     </footer>
   );
 }

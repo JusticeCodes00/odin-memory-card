@@ -53,6 +53,10 @@ export default function App() {
     <div className="app">
       <Header score={score} bestScore={bestScore} />
       <main>
+        <p className="rules">
+          Click on a Pokémon to score a point, but don't click the same one
+          twice! How high can you go?
+        </p>
         <CardContainer onCardClick={onCardClick} cards={cards} />
       </main>
       <Footer />
