@@ -5,7 +5,7 @@ A memory card game built with React. Test your memory by clicking on Pokémon, b
 
 ## Live Demo
 
-[Live Demo](./src/assets/screen-shot.png)
+[Live Demo](https://odin-memory-card-i1ihlcpqy-justicecodes-projects.vercel.app/)
 
 ## Screenshot
 
