@@ -135,6 +135,10 @@ footer p {
   box-shadow: 0 0 25px var(--color-accent);
 }
 
+.card:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
 .card div {
   padding: 1rem;
 }
